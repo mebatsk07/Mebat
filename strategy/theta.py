@@ -10,15 +10,24 @@ class ThetaEngine:
         )
 
         if theta >= 25:
-            return 100
+            score = 100
 
         elif theta >= 15:
-            return 80
+            score = 80
 
         elif theta >= 10:
-            return 60
+            score = 60
 
         elif theta >= 5:
-            return 40
+            score = 40
 
-        return 20
+        else:
+            score = 20
+
+        return {
+
+            "theta": theta,
+
+            "score": score
+
+        }

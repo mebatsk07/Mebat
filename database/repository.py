@@ -45,5 +45,68 @@ class Repository:
 
         print(f"Saved {len(snapshots)} option snapshots.")
 
+    def save_market_snapshot(self, snapshot):
+
+        self.db.add(snapshot)
+
+        self.db.commit()
+
+        print("Saved market snapshot.")
+
+    def save_paper_trade(self, trade):
+
+        self.db.add(trade)
+
+        self.db.commit()    
+    def update_paper_trade(self, trade):
+
+         self.db.commit()    
+
     def close(self):
         self.db.close()
+
+    def get_open_trade(self, symbol):
+
+        stmt = select(PaperTrade).where(
+
+            PaperTrade.symbol == symbol,
+
+            PaperTrade.exit_time == None
+
+        )
+
+        result = self.db.execute(stmt)
+
+        return result.scalar_one_or_none()    
+    
+    def save_decision(self, decision):
+
+        self.db.add(decision)
+
+        self.db.commit()
+
+    def daily_statistics(self):
+
+        total = self.db.query(PaperTrade).count()
+
+        closed = self.db.query(PaperTrade).filter(
+        PaperTrade.exit_time != None
+        ).all()
+
+        wins = len([t for t in closed if t.pnl > 0])
+
+        losses = len([t for t in closed if t.pnl <= 0])
+
+        pnl = sum(t.pnl for t in closed)
+
+        return {
+
+        "total": total,
+
+        "wins": wins,
+
+        "losses": losses,
+
+        "net_pnl": pnl,
+
+    }    

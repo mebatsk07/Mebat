@@ -272,3 +272,41 @@ ENABLE_LIQUIDITY_SCORE = True
 ENABLE_OPTION_SCORE = True
 
 ENABLE_PORTFOLIO_RISK_CHECK = True
+
+ACCOUNT_CAPITAL = 100000
+
+DEPLOYED_CAPITAL = 40000
+
+MAX_ACCOUNT_DRAWDOWN = 0.05
+
+MAX_DAILY_LOSS = 0.03
+
+MAX_OPEN_POSITIONS = 2
+
+RISK_PER_TRADE_USD = 15
+
+ENTRY_AFTER_HOUR = 23
+
+MIN_EXPIRY_HOURS = 6
+
+LEVERAGE = 200
+
+MONITOR_INTERVAL_SECONDS = 30
+
+DASHBOARD_REFRESH_SECONDS = 30
+
+MARKET_REFRESH_SECONDS = 30
+
+STRIKE_RANGE_PERCENT = 3.0
+
+# --------------------------------------------------
+# Candidate Ranking
+# --------------------------------------------------
+
+MIN_FINAL_SCORE = 75
+
+# --------------------------------------------------
+# Position Limits
+# --------------------------------------------------
+
+MAX_OPEN_POSITIONS = 2
